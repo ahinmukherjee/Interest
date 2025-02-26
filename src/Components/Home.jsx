@@ -1,16 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.css';
 const Home = () => {
+  const[value, setValue]= useState("");
+
+  // const handleChange = (event) => {
+  //   const inputValue = event.target.value;
+  //   console.log("Value:", inputValue);
+  //   console.log("Type:", typeof inputValue);
+  //   setValue(inputValue);
+  // };
+
+  const handleChange = (event) => {
+    const stringValue = event.target.value;
+    const numberValue = Number(stringValue); // Convert to number
+    console.log("Original:", stringValue, "Type:", typeof stringValue);
+    console.log("Converted:", numberValue, "Type:", typeof numberValue);
+    setValue(numberValue);
+  };
+
   return (
     <div className="body">
-      <div class="container">
-        <div class="card">
+      <div className="container">
+        <div className="card">
           <h2>Welcome</h2>
-          <input type="number" placeholder="Enter Amount" />
-          <input type="number" placeholder="Enter Interest (%)" />
-          <input type="number" placeholder="Enter Time (Years)" />
+          <input type="number" onChange={handleChange}  placeholder="Enter Amount"  value={value}/>
+          <input type="number"   placeholder="Enter Interest (%)"  />
+          <input type="number"  placeholder="Enter Time (Years)" />
           <button>Click me!</button>
-          <p class="result">Total ammount is: </p>
+          <p className="result">Total ammount is: </p>
         </div>
       </div>  
     </div>
